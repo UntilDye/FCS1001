@@ -1,8 +1,8 @@
-细菌检测项目 (Bacteria Detection)
+# 细菌检测项目 (Bacteria Detection)
 基于YOLOv11的细菌检测系统，支持从自定义JSON格式数据到YOLO格式的转换、模型训练和推理。
 
+---
 项目结构
-awk
 
 
 bacteria-detection/
