@@ -4,55 +4,55 @@
 ---
 ## 项目结构
 
-bacteria-detection/
-│
-├── core/                      # 核心代码模块
-│   │
-│   ├── dataloader/            # 数据加载处理
-│   │   ├── data2yolo_format.py    → 数据格式转换(YOLO格式)
-│   │   └── data_loader.py         → 数据加载与预处理
-│   │
-│   ├── model/                 # 模型实现
-│   │   └── yolov11.py            → YOLOv11模型架构
-│   │
-│   └── utils/                 # 工具函数
-│       ├── loss.py               → 损失函数实现
-│       └── logger.py             → 训练日志记录
-│
-├── data/                      # 数据管理
-│   ├── raw/                   # 原始数据
-│   │   ├── Images/               → 原始图片集
-│   │   └── DatasetJson/          → JSON标注文件
-│   │
-│   └── processed/             # 处理后数据
-│       └── yolo_format/          → YOLO格式数据集
-│
-├── experiments/               # 实验记录
-│   └── runs/detect/              → 训练结果与检测输出
-│
-├── configs/                   # 配置管理
-│   └── train_config.yaml         → 训练超参数配置
-│
-├── scripts/                   # 可执行脚本
-│   ├── train.py                  → 模型训练入口
-│   └── inference.py              → 模型推理入口
-│
-└── docs/                      # 项目文档
-    ├── README.md                 → 项目说明文档
-    └── CHANGELOG.md              → 版本更新记录(忽略)
+-bacteria-detection/
+-│
+-├── core/                      # 核心代码模块
+-│   │
+-│   ├── dataloader/            # 数据加载处理
+-│   │   ├── data2yolo_format.py    → 数据格式转换(YOLO格式)
+-│   │   └── data_loader.py         → 数据加载与预处理
+-│   │
+-│   ├── model/                 # 模型实现
+-│   │   └── yolov11.py            → YOLOv11模型架构
+-│   │
+-│   └── utils/                 # 工具函数
+-│       ├── loss.py               → 损失函数实现
+-│       └── logger.py             → 训练日志记录
+-│
+-├── data/                      # 数据管理
+-│   ├── raw/                   # 原始数据
+-│   │   ├── Images/               → 原始图片集
+-│   │   └── DatasetJson/          → JSON标注文件
+-│   │
+-│   └── processed/             # 处理后数据
+-│       └── yolo_format/          → YOLO格式数据集
+-│
+-├── experiments/               # 实验记录
+-│   └── runs/detect/              → 训练结果与检测输出
+-│
+-├── configs/                   # 配置管理
+-│   └── train_config.yaml         → 训练超参数配置
+-│
+-├── scripts/                   # 可执行脚本
+-│   ├── train.py                  → 模型训练入口
+-│   └── inference.py              → 模型推理入口
+-│
+-└── docs/                      # 项目文档
+-    ├── README.md                 → 项目说明文档
+-   └── CHANGELOG.md              → 版本更新记录(忽略)
 
 
 ---
 
 ## 功能特性
-✅ 支持JSON到YOLO格式的数据转换
-✅ 完整的YOLOv11模型实现
-✅ 数据增强和自动混合精度训练
-✅ 灵活的损失函数（YOLOv11Loss / SimplifiedLoss）
-✅ 详细的训练日志和进度监控
-✅ WandB集成支持
-✅ 多种模型尺寸（n/s/m/l/x）
-✅ 早停和学习率调度
+-✅ 支持JSON到YOLO格式的数据转换
+-✅ 完整的YOLOv11模型实现
+-✅ 数据增强和自动混合精度训练
+-✅ 灵活的损失函数（YOLOv11Loss / SimplifiedLoss）
+-✅ 详细的训练日志和进度监控
+-✅ WandB集成支持
+-✅ 多种模型尺寸（n/s/m/l/x）
+-✅ 早停和学习率调度
 
 ---
 ## 环境要求
