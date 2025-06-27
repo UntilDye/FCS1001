@@ -1,7 +1,7 @@
 # 细菌检测项目 (Bacteria Detection)
 基于YOLOv11的细菌检测系统，支持从自定义JSON格式数据到YOLO格式的转换、模型训练和推理。
 
----
+
 ## 项目结构
 
 -bacteria-detection/
@@ -39,7 +39,7 @@
 -│
 -└── docs/                      # 项目文档
 -    ├── README.md                 → 项目说明文档
--   └── CHANGELOG.md              → 版本更新记录(忽略)
+-    └── CHANGELOG.md              → 版本更新记录(忽略)
 
 
 ---
