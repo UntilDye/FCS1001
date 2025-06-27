@@ -6,7 +6,7 @@
 
 -bacteria-detection/
 -│
--├── core/                      # 核心代码模块
+-├── (core)/                      # 核心代码模块
 -│   │
 -│   ├── dataloader/            # 数据加载处理
 -│   │   ├── data2yolo_format.py    → 数据格式转换(YOLO格式)
@@ -41,8 +41,7 @@
 -    ├── README.md                 → 项目说明文档
 -    └── CHANGELOG.md              → 版本更新记录(忽略)
 
-
----
+'''
 
 ## 功能特性
 -✅ 支持JSON到YOLO格式的数据转换
