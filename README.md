@@ -34,6 +34,8 @@ bacteria-detection/
 ✅ WandB集成支持
 ✅ 多种模型尺寸（n/s/m/l/x）
 ✅ 早停和学习率调度
+
+---
 ## 环境要求
 
 bash
@@ -56,6 +58,7 @@ bash
 
 pip install torch torchvision opencv-python albumentations pillow numpy pyyaml tqdm wandb
 
+---
 # 快速开始
 
 # 1. 数据准备
@@ -82,6 +85,8 @@ json
         }
     ]
 }
+
+---
 # 2. 数据格式转换
 将JSON格式转换为YOLO格式：
 
@@ -106,6 +111,8 @@ converter.process_dataset()
 
 cd dataloader
 python data2yolo_format.py
+
+---
 # 3. 配置训练参数
 编辑 train_config.yaml：
 
@@ -126,12 +133,15 @@ weight_decay: 0.0005
 optimizer: 'AdamW'
 scheduler: 'cosine'
 
+---
 ### 数据配置
 data_yaml: 'dataset/yolo_format/dataset.yaml'
 
 ### 输出配置
 output_dir: 'runs/detect'
 experiment_name: 'bacteria_detection'
+
+---
 
 ## 4. 开始训练
 bash
@@ -149,7 +159,8 @@ python train.py \
     --model-size n \
     --project runs/detect \
     --name bacteria_detection_v1
-    
+
+    ---
 ## 5. 训练监控
 训练过程中会显示：
 
@@ -173,7 +184,6 @@ runs/detect/bacteria_detection/
 使用WandB监控
 在配置文件中启用WandB：
 
-yaml
 
 
 use_wandb: true
@@ -181,12 +191,12 @@ wandb_project: 'bacteria-detection'
 恢复训练
 bash
 
-
+---
 python train.py --resume runs/detect/bacteria_detection/last_custom.pt
 自定义数据增强
 在配置文件中调整增强参数：
 
-yaml
+
 
 
 augmentation:
@@ -197,8 +207,10 @@ augmentation:
   translate: 0.1
   scale: 0.5
   fliplr: 0.5
+
+---
 # 多GPU训练
-bash
+
 
 
 ### 使用DataParallel
@@ -206,6 +218,9 @@ CUDA_VISIBLE_DEVICES=0,1 python train.py --batch-size 32
 
 ### 使用DistributedDataParallel (推荐)
 torchrun --nproc_per_node=2 train.py --batch-size 32
+
+
+---
 
 ##    模型架构
 ### YOLOv11网络结构
@@ -219,6 +234,8 @@ s	9.4M	21.5	快
 m	20.1M	48.0	中等
 l	25.3M	64.6	慢
 x	43.9M	108.1	最慢
+
+---
 ## 数据格式说明
 ### YOLO格式转换
 边界框坐标从绝对坐标转换为相对坐标
@@ -227,7 +244,7 @@ x	43.9M	108.1	最慢
 数据集配置文件
 自动生成的 dataset.yaml：
 
-yaml
+
 
 
 path: /path/to/dataset
@@ -235,6 +252,8 @@ train: images/train
 val: images/val
 nc: 1
 names: ['colony']
+
+---
 # 故障排除
 ## 常见问题
 CUDA内存不足：
@@ -257,7 +276,6 @@ CUDA内存不足：
 
 
 
-
 ## 在train.py中添加
 torch.cuda.empty_cache()
 torch.backends.cudnn.benchmark = True
@@ -272,6 +290,8 @@ torch.backends.cudnn.benchmark = True
 ## 使用混合精度训练
 启用compile模式（PyTorch 2.0+）
 优化数据预处理管道
+
+---
 # API参考
 DatasetConverter类
 
@@ -294,6 +314,8 @@ dataset = BacteriaDataset(
     augment=True,
     class_names=['bacteria']
 )
+
+
 ## YOLOv11模型
 
 
@@ -304,24 +326,27 @@ model = create_model(
     pretrained_weights='path/to/weights.pt'
 )
 
+---
 # 贡献指南
-Fork 项目
-创建特性分支 (git checkout -b feature/AmazingFeature)
-提交更改 (git commit -m 'Add some AmazingFeature')
-推送到分支 (git push origin feature/AmazingFeature)
-打开Pull Request
-许可证
+##    Fork 项目
+-创建特性分支 (git checkout -b feature/AmazingFeature)
+-提交更改 (git commit -m 'Add some AmazingFeature')
+-推送到分支 (git push origin feature/AmazingFeature)
+-打开Pull Request
+## 许可证
 本项目基于MIT许可证开源。详见 LICENSE 文件（没有）。
 
+---
 # 联系方式
 如有问题或建议，请通过以下方式联系：
 
-提交Issue
+## 提交Issue
 发送邮件到：dontlike299@gmail.com
-更新日志
+---
+##    更新日志
 v1.0.0 (2025-06-27)
-初始版本发布
+###    初始版本发布
 支持YOLOv11模型训练
 实现JSON到YOLO格式转换
 添加完整的训练管道
-注意: 本项目专门针对细菌检测任务优化，如需用于其他目标检测任务，可能需要调整部分参数和配置。
+### 注意: 本项目专门针对细菌检测任务优化，如需用于其他目标检测任务，可能需要调整部分参数和配置。
