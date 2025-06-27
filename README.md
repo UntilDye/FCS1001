@@ -4,7 +4,7 @@
 项目结构
 awk
 
-复制
+
 bacteria-detection/
 ├── dataloader/
 │   ├── data2yolo_format.py    # 数据格式转换
@@ -34,7 +34,7 @@ bacteria-detection/
 环境要求
 bash
 
-复制
+
 Python >= 3.8
 torch >= 1.9.0
 torchvision >= 0.10.0
@@ -49,7 +49,7 @@ wandb (可选)
 安装依赖
 bash
 
-复制
+
 pip install torch torchvision opencv-python albumentations pillow numpy pyyaml tqdm wandb
 快速开始
 1. 数据准备
@@ -57,14 +57,14 @@ pip install torch torchvision opencv-python albumentations pillow numpy pyyaml t
 确保你的数据按以下结构组织：
 
 
-复制
+
 dataset/
 ├── Images/           # 图片文件 (.jpg, .png, .jpeg)
 └── DatasetJson/      # JSON标注文件
 JSON标注格式
 json
 
-复制
+
 {
     "labels": [
         {
@@ -79,11 +79,10 @@ json
 2. 数据格式转换
 将JSON格式转换为YOLO格式：
 
-python
 
-运行
 
-复制
+
+
 from dataloader.data2yolo_format import DatasetConverter
 
 # 配置路径
@@ -96,17 +95,17 @@ converter = DatasetConverter(IMAGE_DIR, JSON_DIR, OUTPUT_DIR, train_ratio=0.8)
 converter.process_dataset()
 或直接运行：
 
-bash
 
-复制
+
+
 cd dataloader
 python data2yolo_format.py
 3. 配置训练参数
 编辑 train_config.yaml：
 
-yaml
 
-复制
+
+
 # 模型配置
 model_size: 'n'  # n, s, m, l, x
 num_classes: 1   # 细菌检测类别数
@@ -130,7 +129,7 @@ experiment_name: 'bacteria_detection'
 4. 开始训练
 bash
 
-复制
+
 # 使用配置文件训练
 python train.py --config train_config.yaml
 
@@ -154,7 +153,7 @@ python train.py \
 
 mipsasm
 
-复制
+
 runs/detect/bacteria_detection/
 ├── best.pt              # 最佳模型（YOLO格式）
 ├── last.pt              # 最新模型（YOLO格式）
@@ -168,20 +167,20 @@ runs/detect/bacteria_detection/
 
 yaml
 
-复制
+
 use_wandb: true
 wandb_project: 'bacteria-detection'
 恢复训练
 bash
 
-复制
+
 python train.py --resume runs/detect/bacteria_detection/last_custom.pt
 自定义数据增强
 在配置文件中调整增强参数：
 
 yaml
 
-复制
+
 augmentation:
   hsv_h: 0.015
   hsv_s: 0.7
@@ -193,7 +192,7 @@ augmentation:
 多GPU训练
 bash
 
-复制
+
 # 使用DataParallel
 CUDA_VISIBLE_DEVICES=0,1 python train.py --batch-size 32
 
@@ -221,7 +220,7 @@ YOLO格式转换
 
 yaml
 
-复制
+
 path: /path/to/dataset
 train: images/train
 val: images/val
@@ -246,11 +245,10 @@ CUDA内存不足
 检查标注质量
 显存优化
 
-python
 
-运行
 
-复制
+
+
 # 在train.py中添加
 torch.cuda.empty_cache()
 torch.backends.cudnn.benchmark = True
@@ -267,11 +265,9 @@ torch.backends.cudnn.benchmark = True
 优化数据预处理管道
 API参考
 DatasetConverter类
-python
 
-运行
 
-复制
+
 converter = DatasetConverter(
     image_dir="path/to/images",
     json_dir="path/to/json", 
@@ -279,11 +275,9 @@ converter = DatasetConverter(
     train_ratio=0.8
 )
 BacteriaDataset类
-python
 
-运行
 
-复制
+
 dataset = BacteriaDataset(
     img_dir="path/to/images",
     label_dir="path/to/labels",
@@ -292,16 +286,15 @@ dataset = BacteriaDataset(
     class_names=['bacteria']
 )
 YOLOv11模型
-python
 
-运行
 
-复制
+
 model = create_model(
     model_size='n',
     num_classes=1,
     pretrained_weights='path/to/weights.pt'
 )
+
 贡献指南
 Fork 项目
 创建特性分支 (git checkout -b feature/AmazingFeature)
@@ -309,15 +302,15 @@ Fork 项目
 推送到分支 (git push origin feature/AmazingFeature)
 打开Pull Request
 许可证
-本项目基于MIT许可证开源。详见 LICENSE 文件。
+本项目基于MIT许可证开源。详见 LICENSE 文件（没有）。
 
 联系方式
 如有问题或建议，请通过以下方式联系：
 
 提交Issue
-发送邮件到：your.email@example.com
+发送邮件到：dontlike299@gmail.com
 更新日志
-v1.0.0 (2024-06-27)
+v1.0.0 (2025-06-27)
 初始版本发布
 支持YOLOv11模型训练
 实现JSON到YOLO格式转换
